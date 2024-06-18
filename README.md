@@ -1,88 +1,55 @@
-# Sistema de Gestión de Usuarios
+# Repositorio de Pruebas para Evaluación de Desarrolladores
 
-## Descripción General
-El objetivo de este proyecto es evaluar las habilidades técnicas de los candidatos en el desarrollo de aplicaciones web mediante la creación de un sistema de gestión de usuarios. El sistema debe permitir a los usuarios registrarse, iniciar sesión, y gestionar una lista de usuarios con funcionalidades CRUD (Crear, Leer, Actualizar, Eliminar). El proyecto debe seguir buenas prácticas de desarrollo, incluyendo la seguridad de las contraseñas, manejo de errores y diseño estructurado.
+Bienvenido al repositorio de pruebas para la evaluación de desarrolladores. Este repositorio está diseñado para evaluar las habilidades técnicas de los candidatos interesados en posiciones de desarrollo web.
 
-## Requisitos Técnicos
-1. **Tecnologías:**
-   - Backend: Laravel como API REST (sin usar Laravel Auth)
-   - Frontend: Vue.js con Vite
+## Descripción del Proyecto
 
-2. **Autenticación y Autorización:**
-   - Implementar un sistema de registro y login.
-   - El login debe incluir buenas prácticas de seguridad y manejo de errores.
-   - Las contraseñas deben ser seguras y deben mostrar mensajes informativos sobre los requisitos de seguridad (ej. incluir mayúsculas, números, caracteres especiales).
-   - Implementar el manejo de tokens de autenticación siguiendo buenas prácticas (ej. JWT).
-
-3. **CRUD de Usuarios:**
-   - Implementar un menú que permita listar, crear, leer, actualizar y eliminar usuarios.
-   - Asegurarse de que se siguen buenas prácticas al manejar la información sensible, como contraseñas.
-
-4. **Buenas Prácticas:**
-   - Usar un patrón de diseño (ej. MVC, MVVM).
-   - Implementar control de errores apropiado con mensajes claros y códigos de estado HTTP adecuados.
-   - Incluir validaciones de parámetros tanto en el frontend como en el backend.
-   - Incluir documentación en el código donde sea necesario.
-
-5. **Testing:**
-   - Incluir tests unitarios tanto para el frontend como para el backend.
-   - Usar Vitest para los tests unitarios del frontend.
-   - Lograr al menos un 50% de cobertura de código.
-
-6. **Dockerización:**
-   - Proveer un archivo Dockerfile y un archivo docker-compose.yml para levantar el entorno de desarrollo.
-   - Incluir instrucciones claras y probadas en el archivo README.md.
+El objetivo de este proyecto es desarrollar un sistema de gestión de usuarios utilizando tecnologías modernas y siguiendo las mejores prácticas de desarrollo. Los candidatos deben completar una serie de tareas que incluyen la implementación de autenticación, CRUD de usuarios, pruebas unitarias, dockerización y documentación.
 
 ## Tareas a Realizar
-1. **Configuración del Repositorio:**
-   - Crear un repositorio en GitHub.
-   - Crear una nueva rama con tu nombre para el desarrollo del proyecto.
 
-2. **Desarrollo de la Aplicación:**
-   - Implementar el sistema de registro y login.
-   - Crear el menú de gestión de usuarios con las funcionalidades CRUD.
-   - Asegurar que las contraseñas sean seguras y mostrar mensajes informativos al usuario.
-   - Manejar adecuadamente los errores con mensajes y códigos HTTP.
-   - Implementar el manejo de tokens de autenticación siguiendo buenas prácticas.
-   - Aplicar un patrón de diseño adecuado.
-   - Incluir validaciones de parámetros tanto en el frontend como en el backend.
+### Tecnologías Requeridas
+- Backend: Laravel como API REST (sin Laravel Auth)
+- Frontend: Vue.js con Vite
 
-3. **Testing:**
-   - Escribir tests unitarios para el frontend y backend.
-   - Usar Vitest para los tests unitarios del frontend.
-   - Asegurarse de tener al menos un 50% de cobertura de código.
+### Tareas Específicas
+1. Implementar un sistema de registro y login seguro.
+2. Desarrollar un CRUD completo para la gestión de usuarios.
+3. Escribir pruebas unitarias para el frontend y el backend.
+4. Configurar Docker para facilitar el despliegue del entorno de desarrollo.
+5. Documentar el proyecto con instrucciones claras en el README.md.
 
-4. **Dockerización:**
-   - Configurar los archivos Dockerfile y docker-compose.yml.
-   - Incluir instrucciones detalladas en el archivo README.md sobre cómo levantar el proyecto.
+## Instrucciones para los Candidatos
 
-5. **Documentación:**
-   - Actualizar el README.md con todas las instrucciones necesarias para ejecutar y probar el proyecto.
+1. **Fork y Clonación del Repositorio**
+   - Haz un fork de este repositorio en tu cuenta de GitHub.
+   - Clona el repositorio a tu máquina local para comenzar a trabajar.
+
+2. **Desarrollo del Proyecto**
+   - Crea una nueva rama con tu nombre para realizar las modificaciones.
+   - Completa las tareas descritas en la sección "Tareas a Realizar".
+
+3. **Pruebas y Validación**
+   - Asegúrate de cumplir con los criterios de evaluación especificados en el README.md.
+   - Ejecuta todas las pruebas unitarias y verifica la cobertura de código.
+
+4. **Entrega**
+   - Sube tus cambios a tu repositorio en GitHub.
+   - Crea un pull request a la rama principal de este repositorio desde tu rama de desarrollo.
 
 ## Criterios de Evaluación
-1. **Funcionalidad:**
-   - ¿El sistema de registro y login funciona correctamente?
-   - ¿Las funcionalidades CRUD están implementadas correctamente?
 
-2. **Seguridad:**
-   - ¿Las contraseñas cumplen con los requisitos de seguridad?
-   - ¿Se manejan los tokens de autenticación siguiendo buenas prácticas?
-   - ¿Se manejan los errores adecuadamente con mensajes claros y códigos de estado HTTP?
+- Funcionalidad: ¿Se implementaron todas las funcionalidades requeridas correctamente?
+- Seguridad: ¿Se siguen las mejores prácticas en cuanto a seguridad y manejo de contraseñas?
+- Buenas Prácticas: ¿El código sigue un patrón de diseño adecuado? ¿Está bien documentado y estructurado?
+- Testing: ¿Se escribieron pruebas unitarias significativas y cubren al menos el 50% del código?
+- Dockerización y Documentación: ¿Se proporcionan instrucciones claras para levantar y probar el proyecto usando Docker?
 
-3. **Buenas Prácticas:**
-   - ¿Se sigue un patrón de diseño adecuado?
-   - ¿Se realizan validaciones de parámetros en el frontend y backend?
-   - ¿El código está documentado y es fácil de entender?
+## Recursos Adicionales
 
-4. **Testing:**
-   - ¿Los tests cubren al menos el 50% del código?
-   - ¿Los tests son significativos y validan correctamente las funcionalidades?
+- [Documentación de Laravel](https://laravel.com/docs)
+- [Documentación de Vue.js](https://v3.vuejs.org/guide/introduction.html)
+- [Guía de Markdown](https://www.markdownguide.org/getting-started/)
 
-5. **Dockerización y Documentación:**
-   - ¿El proyecto se puede levantar fácilmente con Docker?
-   - ¿Las instrucciones en el README.md son claras y completas?
+¡Buena suerte!
 
-## Entrega
-- **Fecha límite:** [Fecha límite]
-- **Repositorio:** [Enlace al repositorio]
-- **Instrucciones de entrega:** Realiza un pull request a la rama principal con tu rama de desarrollo.
