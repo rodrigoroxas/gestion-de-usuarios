@@ -1,30 +1,57 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
   <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+    <header>
+      <nav>
+        <ul>
+          <li><router-link to="/">Home</router-link></li>
+          <li v-if="!isAuthenticated"><router-link to="/login">Login</router-link></li>
+          <li v-if="!isAuthenticated"><router-link to="/register">Register</router-link></li>
+          <li v-if="isAuthenticated"><router-link to="/users">Pacientes</router-link></li>
+          <li v-if="isAuthenticated"><a href="#" @click.prevent="logout">Logout</a></li>
+        </ul>
+      </nav>
+    </header>
+    <router-view @auth-changed="checkAuthStatus"/>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
+<script setup>
+import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+import axios from './axios'; // Asegúrate de importar la configuración de axios
+
+const router = useRouter();
+const isAuthenticated = ref(false);
+
+const checkAuthStatus = () => {
+  isAuthenticated.value = !!localStorage.getItem('token');
+};
+
+const logout = async () => {
+  try {
+    await axios.post('/logout');
+    localStorage.removeItem('token');
+    isAuthenticated.value = false;
+    router.push('/login');
+  } catch (error) {
+    console.error('Logout failed:', error);
+  }
+};
+
+onMounted(checkAuthStatus);
+</script>
+
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+header {
+  background-color: #f8f9fa;
+  padding: 1rem;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+nav ul {
+  list-style-type: none;
+  padding: 0;
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+nav ul li {
+  display: inline;
+  margin-right: 1rem;
 }
 </style>

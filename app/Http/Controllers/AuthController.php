@@ -11,7 +11,6 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 
 class AuthController extends Controller
 {
-    // Registro de usuario
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -20,16 +19,16 @@ class AuthController extends Controller
             'password' => [
                 'required',
                 'string',
-                'min:8', // mínimo 8 caracteres
-                'regex:/[a-z]/', // debe contener al menos una letra minúscula
-                'regex:/[A-Z]/', // debe contener al menos una letra mayúscula
-                'regex:/[0-9]/', // debe contener al menos un número
-                'regex:/[@$!%*#?&]/' // debe contener al menos un caracter especial
+                'min:8',
+                'regex:/[a-z]/', // al menos una letra minúscula
+                'regex:/[A-Z]/', // al menos una letra mayúscula
+                'regex:/[0-9]/', // al menos un número
+                'regex:/[!@#$%^&*(),.?":{}|<>]/' // al menos un carácter especial
             ],
         ]);
 
         if ($validator->fails()) {
-            return response()->json($validator->errors(), 400);
+            return response()->json(['errors' => $validator->errors()], 400);
         }
 
         $user = User::create([
@@ -47,7 +46,6 @@ class AuthController extends Controller
         ], 201);
     }
 
-    // Inicio de sesión
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
@@ -63,21 +61,24 @@ class AuthController extends Controller
         return response()->json(['token' => $token]);
     }
 
-    // Obtener usuario autenticado
-    public function user(Request $request)
+    public function me()
     {
-        $user = JWTAuth::parseToken()->authenticate();
-        return response()->json($user);
+        return response()->json(auth()->user());
     }
 
-    // Cerrar sesión
-    public function logout(Request $request)
+    public function logout()
     {
         try {
-            JWTAuth::invalidate(JWTAuth::getToken());
+            auth()->logout();
             return response()->json(['message' => 'Sesión cerrada correctamente']);
         } catch (JWTException $e) {
             return response()->json(['error' => 'No se pudo cerrar la sesión'], 500);
         }
+    }
+
+    public function user(Request $request)
+    {
+        $user = JWTAuth::parseToken()->authenticate();
+        return response()->json($user);
     }
 }
