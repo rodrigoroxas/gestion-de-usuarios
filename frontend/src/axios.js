@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-  baseURL: 'http://localhost:8000/api', 
+  baseURL: 'http://localhost:8000/api',
   headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json'
@@ -23,7 +23,7 @@ apiClient.interceptors.response.use(response => {
 }, error => {
   if (error.response && error.response.status === 401) {
     localStorage.removeItem('token');
-    window.location.href = '/login'; // Redirige a la página de login si el token ha expirado o no es válido
+    window.location.href = '/login';
   }
   return Promise.reject(error);
 });

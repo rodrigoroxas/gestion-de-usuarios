@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Login from '../components/Login.vue'; 
+import Login from '../components/Login.vue';
 import Register from '../components/Register.vue';
 import UserManagement from '../components/UserManagement.vue';
 import Home from '../components/Home.vue';
@@ -43,3 +43,4 @@ router.beforeEach((to, from, next) => {
 });
 
 export default router;
+export { routes }; 
