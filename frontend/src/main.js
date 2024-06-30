@@ -1,15 +1,14 @@
 import { createApp } from 'vue';
 import App from './App.vue';
-import router from './router';
-import axios from 'axios';
+import './index.css';
+import router from './router'; // Importa el router configurado
+import apiClient from './axios'; // Importa la configuración de Axios
 
-axios.defaults.baseURL = 'http://localhost:8000/api';
-axios.interceptors.request.use(config => {
-    const token = localStorage.getItem('token');
-    if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-});
+const app = createApp(App);
 
-createApp(App).use(router).mount('#app');
+// Agrega Axios al prototipo de Vue para que esté disponible en todos los componentes
+app.config.globalProperties.$axios = apiClient;
+
+app.use(router);
+
+app.mount('#app');

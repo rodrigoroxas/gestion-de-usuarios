@@ -1,16 +1,27 @@
 <template>
-    <div class="login-container">
-      <h1>Iniciar Sesión</h1>
-      <form @submit.prevent="login">
-        <input v-model="email" placeholder="Correo Electrónico" required />
-        <input v-model="password" type="password" placeholder="Contraseña" required />
-        <button type="submit">Iniciar Sesión</button>
+  <div class="min-h-screen bg-gray-100 flex items-center justify-center">
+    <div class="max-w-md w-full bg-white p-8 rounded-lg shadow-md">
+      <h1 class="text-2xl font-bold mb-4">Iniciar Sesión</h1>
+      <form @submit.prevent="login" class="space-y-4">
+        <div>
+          <input v-model="email" type="email" placeholder="Correo Electrónico" required
+            class="w-full p-2 border rounded" />
+        </div>
+        <div>
+          <input v-model="password" type="password" placeholder="Contraseña" required
+            class="w-full p-2 border rounded" />
+        </div>
+        <div>
+          <button type="submit" class="w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Iniciar
+            Sesión</button>
+        </div>
       </form>
-      <p v-if="error">{{ error }}</p>
+      <p v-if="error" class="text-red-500 mt-4">{{ error }}</p>
     </div>
-  </template>
-  
-  <script>
+  </div>
+</template>
+
+<script>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import axios from '../axios';
@@ -32,7 +43,12 @@ export default {
         emit('auth-changed'); // Emitir evento
         router.push('/users');
       } catch (err) {
-        error.value = 'Error al iniciar sesión: ' + (err.response?.data?.message || err.message);
+        error.value = 'Error al iniciar sesión: ' +
+          (err.response?.data?.message
+            ? err.response.data.message
+            : (err.response?.status === 400
+              ? 'Por favor verifica tus credenciales, error 400'
+              : err.message));
       }
     };
 
@@ -46,25 +62,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.login-container {
-  max-width: 400px;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-}
-input {
-  display: block;
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 8px;
-}
-button {
-  width: 100%;
-  padding: 10px;
-}
-.error {
-  color: red;
-}
-</style>
+<style scoped></style>

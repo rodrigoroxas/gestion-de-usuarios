@@ -39,7 +39,7 @@ class UserController extends Controller
                 'regex:/[a-z]/', // debe contener al menos una letra minúscula
                 'regex:/[A-Z]/', // debe contener al menos una letra mayúscula
                 'regex:/[0-9]/', // debe contener al menos un número
-                'regex:/[@$!%*#?&]/' // debe contener al menos un caracter especial
+                'regex:/[!@#$%^&*(),.?":{}|<>]/' // debe contener al menos un caracter especial
             ],
         ]);
 

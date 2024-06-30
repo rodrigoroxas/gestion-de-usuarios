@@ -1,23 +1,31 @@
 <template>
-  <div class="register-container">
-    <h1>Registrarse</h1>
-    <form @submit.prevent="register">
-      <input v-model="name" placeholder="Nombre" required />
-      <span v-if="errors.name">{{ errors.name }}</span>
-
-      <input v-model="email" placeholder="Correo Electrónico" required />
-      <span v-if="errors.email">{{ errors.email }}</span>
-
-      <input v-model="password" type="password" placeholder="Contraseña" required />
-      <span v-if="errors.password">{{ errors.password }}</span>
-
-      <input v-model="confirmPassword" type="password" placeholder="Confirmar Contraseña" required />
-      <span v-if="errors.confirmPassword">{{ errors.confirmPassword }}</span>
-
-      <button type="submit">Registrarse</button>
-    </form>
-    <p v-if="error" class="error">{{ error }}</p>
-    <p v-if="success" class="success">{{ success }}</p>
+  <div class="min-h-screen bg-gray-100 flex items-center justify-center">
+    <div class="max-w-md w-full bg-white p-8 rounded-lg shadow-md">
+      <h1 class="text-2xl font-bold mb-4">Registrarse</h1>
+      <form @submit.prevent="register" class="space-y-4">
+        <div>
+          <input v-model="name" placeholder="Nombre" required class="w-full p-2 border rounded" />
+          <span v-if="errors.name" class="text-red-500 text-sm">{{ errors.name }}</span>
+        </div>
+        <div>
+          <input v-model="email" placeholder="Correo Electrónico" required class="w-full p-2 border rounded" />
+          <span v-if="errors.email" class="text-red-500 text-sm">{{ errors.email }}</span>
+        </div>
+        <div>
+          <input v-model="password" type="password" placeholder="Contraseña" required class="w-full p-2 border rounded" />
+          <span v-if="errors.password" class="text-red-500 text-sm">{{ errors.password }}</span>
+        </div>
+        <div>
+          <input v-model="confirmPassword" type="password" placeholder="Confirmar Contraseña" required class="w-full p-2 border rounded" />
+          <span v-if="errors.confirmPassword" class="text-red-500 text-sm">{{ errors.confirmPassword }}</span>
+        </div>
+        <div>
+          <button type="submit" class="w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Registrarse</button>
+        </div>
+      </form>
+      <p v-if="error" class="text-red-500 mt-4">{{ error }}</p>
+      <p v-if="success" class="text-green-500 mt-4">{{ success }}</p>
+    </div>
   </div>
 </template>
 
@@ -117,31 +125,4 @@ export default {
 </script>
 
 <style scoped>
-.register-container {
-  max-width: 400px;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-}
-input {
-  display: block;
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 8px;
-}
-button {
-  width: 100%;
-  padding: 10px;
-}
-.error {
-  color: red;
-}
-.success {
-  color: green;
-}
-span {
-  color: red;
-  font-size: 12px;
-}
 </style>
