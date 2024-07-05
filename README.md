@@ -42,7 +42,7 @@ docker-compose exec backend php artisan migrate --seed
 
 Para ingresar al sistema, ve a tu navegador e ingresa a la siguiente URL
 
-- [text](http://localhost:8080/)
+- [http://localhost:8080/](http://localhost:8080/)
 
 
 ### Paso 6: Iniciar sesión
